@@ -1,6 +1,16 @@
 {
 	"name": "Python 3",
-	"image": "docker.pkg.github.com/codespaces-contrib/knboard-dockerpull/knboard-image:0.1",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "..",
+		"args": { 
+			// Update 'VARIANT' to pick a Python version: 3, 3.6, 3.7, 3.8, 3.9
+			"VARIANT": "3.8",
+			// Options
+			"INSTALL_NODE": "true",
+			"NODE_VERSION": "lts/*"
+		}
+	},
 	"runArgs": ["--init"],
 	"mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind" ],
 	"overrideCommand": false,
